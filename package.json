@@ -1,7 +1,7 @@
 {
-  "name": "githunt",
-  "version": "1.0.0",
-  "description": "Example app for Apollo",
+  "name": "apollo-chat-ui",
+  "version": "0.1.0",
+  "description": "Chat app UI built with Apollo",
   "main": "index.js",
   "scripts": {
     "start-app-client": "webpack-dev-server -d --hot --inline --no-info --port 3020",
@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/apollostack/GitHunt.git"
+    "url": "git+https://github.com/RamyElkest/apollo-chat-ui.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/apollostack/GitHunt/issues"
+    "url": "https://github.com/RamyElkest/apollo-chat-ui/issues"
   },
-  "homepage": "https://github.com/apollostack/GitHunt#readme",
+  "homepage": "https://github.com/RamyElkest/apollo-chat-ui#readme",
   "devDependencies": {
     "babel-cli": "^6.8.0",
     "babel-core": "^6.8.0",
