@@ -4,7 +4,6 @@ import { Router, browserHistory } from 'react-router';
 import { createNetworkInterface } from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
 import { Client } from 'subscriptions-transport-ws';
-import * as ReactGA from 'react-ga';
 // Polyfill fetch
 import 'isomorphic-fetch';
 
@@ -29,14 +28,6 @@ const networkInterfaceWithSubscriptions = addGraphQLSubscriptions(
   wsClient,
 );
 
-// Initialize Analytics
-ReactGA.initialize('UA-74643563-4');
-
-function logPageView() {
-  ReactGA.set({ page: window.location.pathname });
-  ReactGA.pageview(window.location.pathname);
-}
-
 const client = createApolloClient({
   networkInterface: networkInterfaceWithSubscriptions,
   initialState: window.__APOLLO_STATE__, // eslint-disable-line no-underscore-dangle
@@ -45,7 +36,7 @@ const client = createApolloClient({
 
 render((
   <ApolloProvider client={client}>
-    <Router history={browserHistory} onUpdate={logPageView}>
+    <Router history={browserHistory}>
       {routes}
     </Router>
   </ApolloProvider>

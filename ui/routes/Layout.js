@@ -1,9 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-import Profile from '../components/Profile';
-import NavbarLink from '../components/NavbarLink';
-
 const Layout = ({ children, params, location }) => (
   <div>
     <nav className="navbar navbar-default">
@@ -13,24 +10,8 @@ const Layout = ({ children, params, location }) => (
         </div>
 
         <ul className="nav navbar-nav">
-          <NavbarLink
-            title="Top"
-            href="/feed/top"
-            active={location.pathname === '/' || params.type === 'top'}
-          />
-          <NavbarLink
-            title="Hot"
-            href="/feed/hot"
-            active={params.type === 'hot'}
-          />
-          <NavbarLink
-            title="New"
-            href="/feed/new"
-            active={params.type === 'new'}
-          />
         </ul>
 
-        <Profile />
       </div>
     </nav>
     <div className="container">
