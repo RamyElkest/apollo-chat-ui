@@ -15,17 +15,27 @@ class Channel extends React.Component {
 
     return (
       <div>
-        <span>You have {messages.length} messages</span>
-        <span>Current user is {user}</span>
+        <h2>Welcome {user.username}</h2>
+        <span>You have {user.threads.length} threads</span>
+        <ul>
+        {user.threads.map((thread) => (
+          <li key={thread.id}>
+            {thread.name}
+            <ul>
+              {thread.messages.map((mes) => <li key={mes.id}>{mes.content}</li>)}
+            </ul>
+          </li>
+        ))}
+        </ul>
       </div>
     );
   }
 }
 
 Channel.propTypes = {
-  // currentUser: React.PropTypes.shape({
-    user: React.PropTypes.string.isRequired,
-  // }),
+  currentUser: React.PropTypes.shape({
+    username: React.PropTypes.string.isRequired,
+  }),
   messages: React.PropTypes.array,
 };
 
@@ -41,7 +51,7 @@ class ChatPage extends React.Component {
       <div>
         <Channel
           messages={messages || []}
-          user={user && user.username || "!NO USER!"}
+          user={user && user || "!NO USER!"}
         />
         {loading ? <Loading /> : null}
       </div>
@@ -61,7 +71,15 @@ const USER_QUERY = gql`
   query User
   {
     user {
-     username
+      username
+      threads {
+        id
+        name
+        messages {
+          id
+          content
+        }
+      }
     }
   }`;
 
